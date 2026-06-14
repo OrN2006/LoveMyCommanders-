@@ -1,4 +1,6 @@
-/* איפוס כללי הגדרות בסיס */
+/* ==========================================
+   הגדרות בסיס ואיפוס כללי
+   ========================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,16 +9,19 @@
 
 body {
     font-family: 'Assistant', sans-serif;
-    background-color: #fcf8f5; /* רקע שמנת רך ונעים */
-    color: #4a3f35; /* חום כהה עדין במקום שחור נוקשה */
+    background-color: #fcf8f5; /* רקע שמנת רך */
+    color: #4a3f35; /* חום כהה עדין */
     padding: 20px;
     line-height: 1.6;
 }
 
-/* כותרת האתר */
+/* ==========================================
+   כותרת האתר (Header)
+   ========================================== */
 .site-header {
     text-align: center;
     margin: 40px 0;
+    padding: 0 10px;
 }
 
 .site-header h1 {
@@ -30,38 +35,45 @@ body {
     color: #8c7b6e;
 }
 
-/* אזור כרטיסי המוצרים */
+/* ==========================================
+   אזור כרטיסי המוצרים (קונטיינר מרכזי)
+   ========================================== */
 .products-container {
     display: flex;
     justify-content: center;
     gap: 30px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* מאפשר לכרטיסים לרדת שורה כשאין מקום */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 10px;
 }
 
-/* כרטיס הבובה */
+/* ==========================================
+   כרטיס הבובה (Doll Card)
+   ========================================== */
 .doll-card {
     background: #ffffff;
     border-radius: 24px; /* פינות מעוגלות מאוד למראה חמוד */
-    box-shadow: 0 8px 20px rgba(224, 211, 202, 0.4); /* צל רך ולא אגרסיבי */
-    width: 300px;
+    box-shadow: 0 8px 20px rgba(224, 211, 202, 0.4); /* צל רך */
+    width: 300px; /* רוחב קבוע למחשבים */
+    max-width: 100%; /* מונע מהכרטיס לצאת מגבולות המסך בטלפון */
     overflow: hidden;
     transition: transform 0.3s ease;
     border: 1px solid #f3ebe4;
 }
 
-/* אפקט ריחוף קל על כל הכרטיס */
-.doll-card:hover {
-    transform: translateY(-5px);
+/* אפקט ריחוף קל על כל הכרטיס (למחשבים) */
+@media (hover: hover) {
+    .doll-card:hover {
+        transform: translateY(-5px);
+    }
 }
 
 /* אזור התמונה */
 .card-image-wrapper {
     width: 100%;
     height: 250px;
-    background-color: #ffeef2; /* רקע זמני ורדרד עד שתשימי תמונה */
+    background-color: #ffeef2; /* רקע זמני ורדרד */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,7 +83,7 @@ body {
 .doll-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* שומר על פרופורציות התמונה */
+    object-fit: cover;
 }
 
 /* במידה ואין תמונה (רק ה-#), יוצג טקסט זמני קטן */
@@ -99,12 +111,7 @@ body {
 .doll-description {
     font-size: 0.95rem;
     color: #7a6b5f;
-    height: 70px; /* גובה קבוע כדי שהכפתורים בשורה התחתונה יישארו מיושרים */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    min-height: 70px; /* שומר על גובה מינימלי ליישור הכפתורים */
     margin-bottom: 20px;
 }
 
@@ -118,7 +125,7 @@ body {
 .doll-price {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #ff7d9f; /* הדגשת המחיר בורוד קצת יותר כהה */
+    color: #ff7d9f;
 }
 
 .buy-button {
@@ -134,7 +141,6 @@ body {
     box-shadow: 0 4px 10px rgba(255, 158, 187, 0.3);
 }
 
-/* אפקט ריחוף ולחיצה על הכפתור */
 .buy-button:hover {
     background-color: #ff85a7;
 }
@@ -142,3 +148,25 @@ body {
 .buy-button:active {
     transform: scale(0.95);
 }
+
+/* ==========================================
+   התאמה לניידים ומסכים קטנים (Responsive)
+   ========================================== */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* פחות רווח בצדדי המסך בטלפון */
+    }
+
+    .site-header {
+        margin: 25px 0 15px 0;
+    }
+
+    .site-header h1 {
+        font-size: 2rem; /* הקטנת הכותרת הראשית שתתאים למסך קטן */
+    }
+
+    .site-header p {
+        font-size: 0.95rem;
+    }
+
+    .products-container {
